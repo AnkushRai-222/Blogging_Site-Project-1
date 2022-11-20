@@ -41,6 +41,7 @@ const authorization = async function(req,res,next){
     next()
   }
   else{
+    
     const queryByAuthor = req.query.authorId
     if(userVerified != queryByAuthor){
         return res.status(403).send({status:true,msg:"You are not authorised"})

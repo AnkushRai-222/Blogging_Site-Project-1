@@ -46,6 +46,7 @@ const getBlogs = async function (req, res) {
       return res.status(200).send({ status: true, data: allBlog });
     }
 
+
     if (authorId) {
       filter.authorId = authorId;
     }
@@ -54,9 +55,7 @@ const getBlogs = async function (req, res) {
         return res
           .status(400)
           .send({ status: false, msg: "please enter a valid author id" });
-      } else {
-        req.query.authorId = authorId;
-      }
+      } 
     }
     if (category) {
       filter.category = category;
@@ -121,7 +120,7 @@ const deleteBlog = async function (req, res) {
 
       return res
         .status(404)
-        .send({ status: false, msg: "Blog already deleted" });
+        .send({ status: false, msg: "Blog already deleted or not found" });
     }
     const deleteBlog = await blogModel.findOneAndUpdate(
       { _id: blogId },

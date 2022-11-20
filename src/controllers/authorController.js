@@ -32,7 +32,8 @@ const createAuthor= async function (req, res) {
 
     const emailid= await authorModel.findOne({email:email})
         if(emailid){ 
-            return res.status(400).send({status:false, msg:"Email is already exists"})}
+            return res.status(400).send({status:false, msg:"Email is already exists"})
+    }
 
             if(title != "Mr" && title !="Mrs" && title != "Miss"){
                 return res.status(400).send({status:false,msg:"title can only be Mr,Mrs,Miss"})
@@ -67,6 +68,7 @@ const createLogin= async function(req,res){
         "Blog@Project-One"
     )
     return res.status(200).send({status:true,token:token})
+    
     }
     catch(err) {
         console.log("this is error:",err.message)
